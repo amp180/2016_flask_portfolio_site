@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <title>{{ title }} - Pegman.Space</title>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" role="presentation" aria-hidden="true" tabindex="-1" class="navbar-brand"><span class="glyphicon glyphicon-globe"></span></a>
+            </div>
+            <div role="menubar" class="navbar-collapse collapse">
+                <ul role="menu" class="nav navbar-nav">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('cv') }}">CV</a></li>
+                    <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                </ul>
+                <ul role="menu" class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utilities<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{url_for('ip')}}">What's my IP?</a></li>
+                            <li><a href="{{url_for('dcu_rooms')}}">Lab Checker</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="list-unstyled alert alert-info">
+                {% for message in messages %}
+                <li><span role="alert">{{ message }}</span></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}
+            Content goes here.
+        {% endblock %}
+        
+        <hr />
+        <footer>
+            <p>
+                &emsp;
+                <span class="glyphicon glyphicon-copyright-mark" aria-label="Copyright"></span>&nbsp;{{ year }}&nbsp;|
+                <span class="glyphicon glyphicon-envelope"></span>&nbsp;<a href="mailto:adam@Pegman.Space">Adam@Pegman.Space</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="/static/scripts/jquery-1.10.2.js"></script>
+    <script src="/static/scripts/bootstrap.js"></script>
+    <script src="/static/scripts/respond.js"></script>
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>

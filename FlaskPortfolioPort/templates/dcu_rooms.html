@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <center class="well orangebg orangeheading">
+        <h1>Booked Labs in DCU</h1>
+    </center>
+</div>
+<div id="Labs" class="row" aria-describedby="description">
+    {% for room, status in room_availability %}
+    <div class="well col-md-4 {{'greenbg' if (status == FREE) else 'redbg' if (status==BOOKED) else 'graybg'}} ">
+        {{ room.replace("GLA.","") }}: {{ status }}
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="well col-md-12 orangebg">
+        <p id="description">
+            This page shows what labs are free and which are booked in the current 30 minute slot.<br />
+            The labs are normally open 8am-10pm except on weekends when they're only open til 6pm. <br />
+            For more info head to <a href="https://www.dcu.ie/registry/timetables.shtml">DCU's official timetable</a>. <br />
+            It's currently week {{week}}, day {{day}}{{(", time slot ") if hour > 0 else ""}}{{hour if (hour>0) else ""}}.
+        </p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<div class="panel panel-warning row">
+    <center class="panel panel-heading">
+        <h1>Caesar Cracker</h1>
+    </center>
+    <div class="panel panel-body">
+        <center>
+            <br>
+            <p>
+                Caesar cipher cracker, uses average letter frequency for English words.<br />
+                This continues to be the most useless thing I've ever made, even including that box with a switch on it that sticks up a little arm and turns itself off.
+            </p>
+            <br>
+        </center>
+        <center>
+            <form class="form-inline" action="/caesar" method="GET" role="form">
+                <div class="form-group">
+                    <label for="ciphertext">Text To Crack</label>
+                    <textarea class="form-control" id="ciphertext" name="ciphertext"></textarea>
+                </div>
+                <button type="submit" action="submit" class="btn btn-default">Submit</button>
+            </form>
+        </center>
+</div>
+</div>
+{% endblock %} hr machine

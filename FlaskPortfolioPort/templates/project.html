@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<center class="well greenheading">
+    <h1>{{proj.name}}</h1>
+</center>
+
+{{proj.html|safe}}
+
+<div class="alert alert-info">
+    <span class="glyphicon glyphicon-time"></span>
+    Published: {{proj.publish_date}}
+    |
+    <span class="glyphicon glyphicon-link"></span>
+    <a href="{{url_for('project', slug=proj.id)}}">http://Pegman.Space{{url_for('project', slug=proj.id)}}</a>
+</div>
+{% endblock %}

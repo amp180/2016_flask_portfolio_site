@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <center class="row well greenheading "><h1> CV </h1></center>
+    <div class="">
+        <div class="row">
+            <div class="col-md-6 row">
+                <img role="presentation"
+                     class="img-responsive col-md-12 panel panel-default" 
+                     src="/static/content/face.jpg" 
+                 />
+            </div>
+            <div class="col-md-6 row">
+                <div class="col-md-12 col-md-offset-1 panel panel-default ">
+                    <center><h2>Bio</h2></center>
+                    <ul role="group" class="list-unstyled">
+                        <li>Adam Pegman</li>
+                        <li><br /></li>
+                        <li>Age: {{age}}</li>
+                        <li><br /></li>
+                        <li>Greystones,<br> Co. Wicklow, Ireland</li>
+                        <li><br /></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-md-offset-1 panel panel-default">
+                    <center><h2>Profile</h2></center>
+                    <ul role="group" class="list-unstyled">
+                        <li>Currently studying 2nd year Computer Applications at DCU.</li>
+                        <li><br /></li>
+                        <li>Lab Tutor helping out 1st year students with Python.</li>
+                        <li><br /></li>
+                        <li>Working on coursework and other projects.</li>
+                        <li><br /></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 row">
+                <div class="col-md-12 panel panel-default">
+                    <center><h2>Skills</h2></center>
+                    <ul role="group" class="list-unstyled">
+                        <li> Programming </li>
+                        <li> Linux	</li>
+                        <li> Networking </li>
+                        <li> Web Design	</li>
+                    </ul>
+                </div>
+                <div class="col-md-12 panel panel-default ">
+                    <center><h2>Certs</h2></center>
+                    <ul role="group" class="list-unstyled">
+                        <li> JNCIA-Junos </li>
+                        <li> ECDL </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 row">
+                <div class="col-md-12 col-md-offset-1 panel panel-default ">
+                    <center><h2>Programming Languages</h2></center>
+                    <ul role="group" class="list-unstyled">
+                        <li>
+                            <span>Python:</span>
+                            <ul>
+                                <li> Flask </li>
+                                <li> SQLAlchemy </li>
+                            </ul>
+                        </li>
+                        <li> Java	</li>
+                        <li> C/C++	</li>
+                        <li> Shell </li>
+                        <li>
+                            <span>Javascript:</span>
+                            <ul>
+                                <li> JQueryUI </li>
+                                <li> BootStrap </li>
+                            </ul>
+                        </li>
+                        <li> Prolog </li>
+                        <li> R </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-12 panel panel-default">
+                    <center><h1> Education </h1></center>
+                    <table class="table">
+                        <tr>
+                            <th scope="col"> Date </th>
+                            <th scope="col"> School </th>
+                            <th scope="col"> Course </th>
+                            <th scope="col"> </th>
+                        </tr>
+                        <tr>
+                            <td>2014 - Current</td>
+                            <td>DCU</td>
+                            <td>Computer Applications</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2008 - 2014</td>
+                            <td>St David's</td>
+                            <td>Leaving Cert</td>
+                            <td>470 Points</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
