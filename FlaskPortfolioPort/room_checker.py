@@ -1,6 +1,5 @@
 #!/usr/bin/env python2.6
 #import libraries
-from flask import flash
 import datetime
 import pytz
 from lxml import html
@@ -99,3 +98,9 @@ def dcu_lab_free_now(room="GLA.LG25", now=None):
 
     return dcu_lab_timetable(room=room, **get_dcu_calendar_code(now=now) )
 
+if __name__ == '__main__:
+    from multiprocessing import Pool
+    rooms = ['GLA.LG25', 'GLA.LG26', 'GLA.L114', 'GLA.L101', 'GLA.L128', 'GLA.L125', 'GLA.C204', 'GLA.C206', 'GLA.C214']
+    #use thread pool to look up availability
+    availability = Pool(9).map(dcu_lab_free_now, rooms)
+    print(zip(rooms, availability))
