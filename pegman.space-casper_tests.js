@@ -16,6 +16,19 @@ casper.test.begin('Home page loads successfully.', 3,  function(){
 	casper.run(function(){ casper.test.done()});
 });
 
+casper.test.begin('CV loads successfully.', 2,  function(){
+	casper.start('http://pegman.space/cv');
+	
+	casper.then(function() {
+		casper.test.assertTitle("CV - Pegman.Space", "Title correct.")
+		
+		//check sections show up
+		casper.test.assertElementCount('.panel-default', 7)
+		}
+	);
+		
+	casper.run(function(){ casper.test.done()});
+});
 
 casper.test.begin('IP checker works.', 3,  function(){
 	casper.start('http://pegman.space/ip');
@@ -43,31 +56,6 @@ casper.test.begin('IP checker works.', 3,  function(){
 		
 	casper.run(function(){ casper.test.done()});
 });
-
-casper.test.begin('IP checker works.', 3,  function(){
-	casper.start('http://pegman.space/ip');
-	
-	casper.then(function() {
-		casper.test.assertTitle("Home - Pegman.Space", "Title correct.")
-		
-		//When you visit /ip you get redirected back to the home page and the ip is included in the html using flask's flash message feature
-		var flashed_message_xpath = xpath('/html/body/div[@class="container body-content"]/ul/li/span')
-		
-		casper.test.assertExists(
-			flashed_message_xpath,
-			"A message was flashed." 
-		)
-		
-		casper.test.assertMatch(
-					casper.fetchText(flashed_message_xpath),
-					/[0-9]{1,4}(.[0-9]{1,4}){3}/,
-					"Flashed message roughly looks like an ip address."
-					); 
-		}
-	);
-		
-	casper.run(function(){ casper.test.done()});
-}); 
  
 casper.test.begin('DCU lab checker works.', 11,  function(){
 	casper.start('http://pegman.space/dcu_rooms');
@@ -98,5 +86,3 @@ casper.test.begin('DCU lab checker works.', 11,  function(){
 		
 	casper.run(function(){ casper.test.done()});
 }); 
-
-
