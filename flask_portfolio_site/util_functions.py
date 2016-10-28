@@ -5,14 +5,14 @@ from collections import defaultdict
 import heapq
 import string
 
-def age():                                               
+def age():
      years_since = lambda date, today: int( (today - date).days /365.2425 ) #off by a bit
      return years_since( datetime.date(day=11, month=6, year=1995), datetime.date.today() )
 
 
-def draw_memetext((h, w), caption, TOP=False):
+def draw_memetext(h, w, caption, TOP=False):
     """Creates a blank image with memetext of a given size."""
-    textimg = Image.new('RGBA', (h,w), (255,255,255,0))
+    textimg = Image.new('RGBA', (h, w), (255,255,255,0))
     textdraw = ImageDraw.Draw(textimg)
 
     #find ideal font size
@@ -23,7 +23,7 @@ def draw_memetext((h, w), caption, TOP=False):
         size -= 4
         memefont = ImageFont.truetype('./static/fonts/impact.ttf', size=size)
         tw, th = textdraw.textsize(longertext, font=memefont)
-   
+
     draw_height = 0 if top else h - th
 
     #Draw black outline
@@ -41,7 +41,8 @@ def meme( caption1, caption2 ):
 
     longertext = caption1 if len(caption1)>len(caption2) else caption2
 
-    textimg = Image.new('RGBA', fatty.size, (255,255,255,0))
+    sizex, sizey = fatty.size
+    textimg = Image.new('RGBA', sizex, sizey, (255,255,255,0))
     textdraw = ImageDraw.Draw(textimg)
     fw, fh = fatty.size
 
@@ -59,11 +60,10 @@ def meme( caption1, caption2 ):
 
     textdraw.text( ((fw/2) - (w/2), 0), caption1, font=memefont, fill=(255,255,255,255))
     textdraw.text(((fw/2) - (w/2), fh-h), caption2, font=memefont, fill=(255,255,255,255))
-    
+
     outimg = Image.alpha_composite(fatty, textimg)
     outfile = io.BytesIO()
     outimg.save(outfile, format='jpeg')
 
     outfile.seek(0)
     return outfile
-

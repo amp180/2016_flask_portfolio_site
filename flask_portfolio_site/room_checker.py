@@ -10,7 +10,7 @@ import requests_cache
 #cache the requests library for 35 minutes.
 #this is needed so if anyone actually uses the lab checker it won't be hammering dcu's timetable server.
 #Can't cache longer as it's only requesting 1*1 timetables for easier parsing, code to handle column span would be kinda ugly.
-requests_cache.install_cache(expire_after=(60*60*35), backend='sqlite') 
+requests_cache.install_cache(expire_after=(60*60*35), backend='sqlite')
 
 #Constants
 IRISH_TIME = pytz.timezone('Europe/Dublin')
@@ -80,7 +80,7 @@ def get_dcu_calendar_code(now=None):
     #find number of weeks since first monday of academic year.
     sem1date = semester_one_date(academic_year)
     this_monday = now - datetime.timedelta(days=now.weekday()-1)
-    
+
     #calculate week day and hour numbers for api
     week = int( (this_monday - sem1date).days / 7 ) +1 #weeks since week sept 21, 1 indexed
     day = now.weekday() + 1 #day of week (1 indexed)
@@ -94,11 +94,11 @@ def dcu_lab_free_now(room="GLA.LG25", now=None):
        now = current_irish_time()
 
     if not dcu_open_now(now=now):
-        return CLOSED 
+        return CLOSED
 
     return dcu_lab_timetable(room=room, **get_dcu_calendar_code(now=now) )
 
-if __name__ == '__main__:
+if __name__ == '__main__':
     from multiprocessing import Pool
     rooms = ['GLA.LG25', 'GLA.LG26', 'GLA.L114', 'GLA.L101', 'GLA.L128', 'GLA.L125', 'GLA.C204', 'GLA.C206', 'GLA.C214']
     #use thread pool to look up availability

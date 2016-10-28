@@ -50,3 +50,6 @@ def before_first_request():
 
     user_datastore.add_role_to_user('admin@localhost', 'admin')
     db.session.commit()
+
+if __name__=="__main__":
+    app.run(debug=True)
