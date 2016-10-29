@@ -7,11 +7,11 @@ import datetime
 import json
 from flask import render_template, request, flash
 from flask import make_response, redirect, url_for, jsonify
-from __init__ import app
-import db_models
-from util_functions import *
+from . import app
+from . import db_models
+from .util_functions import *
 
-from room_checker import dcu_lab_free_now, get_dcu_calendar_code, dcu_open_now, FREE, BOOKED, CLOSED, TIMETABLE_NOT_AVAILABLE
+from .room_checker import dcu_lab_free_now, get_dcu_calendar_code, dcu_open_now, FREE, BOOKED, CLOSED, TIMETABLE_NOT_AVAILABLE
 
 @app.route('/')
 def home(*args, **kwargs):
@@ -46,7 +46,7 @@ def projects(*args,**kwargs):
             year = datetime.date.today().year,
             age = age(),
             projects = query,
-            enumerate=enumerate 
+            enumerate=enumerate
         )
 
 @app.route('/projects/<slug>')
@@ -70,7 +70,7 @@ def ip(*args, **kwargs):
     if request.referrer and (request.referrer.lower().find('pegman.space') != -1):
         return redirect(request.referrer) #go back to the page we came from if possible
 
-    return redirect(url_for('home')) 
+    return redirect(url_for('home'))
 
 @app.route('/DCU_Rooms')
 @app.route('/dcu_rooms')
@@ -81,19 +81,19 @@ def dcu_rooms(*args, **kwargs):
     availability = Pool(9).map(dcu_lab_free_now, rooms)
 
     if not dcu_open_now():
-        flash("DCU isn't normally open at this time."); 
+        flash("DCU isn't normally open at this time.");
     if all( a is BOOKED for a in availability ):
         flash("All labs are booked for the current slot.")
     if TIMETABLE_NOT_AVAILABLE in availability:
            flash("Failed to get timetable for one or more labs.");
-    
+
     calendar_code = get_dcu_calendar_code()
-    
-    return render_template( 'dcu_rooms.html',  
+
+    return render_template( 'dcu_rooms.html',
                            year = datetime.date.today().year,
                            title='DCU Lab Bookings',
                            room_availability=zip(rooms, availability),
-                           FREE=FREE, 
+                           FREE=FREE,
                            BOOKED=BOOKED,
                            week=calendar_code['week'],
                            day=calendar_code['day'],
@@ -105,19 +105,19 @@ def dcu_rooms(*args, **kwargs):
 def fatty(*args, **kwargs):
     """Serve Fatty Form Page, render fatty meme images."""
     if 'caption1' in request.values or 'caption2' in request.values:
-               res = make_response( 
-                        meme( 
-                                request.values['caption1'], 
-                                request.values['caption2'] 
-                           ).read() 
+               res = make_response(
+                        meme(
+                                request.values['caption1'],
+                                request.values['caption2']
+                           ).read()
                         )
                res.headers['Content-type'] = 'image/jpeg'
                return res
     else:
         return render_template(
-                 'fatty.html', 
+                 'fatty.html',
                  title = "Fatty ",
-                 year=datetime.date.today().year 
+                 year=datetime.date.today().year
                )
 
 @app.route('/fatty/<cap1>/<cap2>', methods=['POST', 'GET'])
@@ -128,8 +128,7 @@ def fatty_plain_url(cap1, cap2, fname="fatty.jpg", *args, **kwargs):
         Cleaner url for fatty images, since it's free of ?&; chars,
         you can post it in minecraft chats and other places with sensitive formatting.
     """
-    return redirect( 
-                url_for('fatty') 
-                + "?caption1=%s&caption2=%s&/%s" % (cap1, cap2, fname) 
+    return redirect(
+                url_for('fatty')
+                + "?caption1=%s&caption2=%s&/%s" % (cap1, cap2, fname)
             )
-

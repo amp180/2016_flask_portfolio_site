@@ -13,16 +13,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "WOWsEcReTkEY"
 
-from db_models import db, Project
+from .db_models import db, Project
 db.app = app
 db.init_app(app)
 
-from db_models import  user_datastore
+from .db_models import  user_datastore
 security = Security(app, user_datastore)
 
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from db_models import User, UserAdmin, Role, RoleAdmin
+from .db_models import User, UserAdmin, Role, RoleAdmin
 
 admin = Admin(app, name='FlaskPortfolioPort', template_mode='bootstrap3')
 admin.add_view(RoleAdmin(Project, db.session))
@@ -30,7 +30,7 @@ admin.add_view(UserAdmin(User, db.session))
 admin.add_view(RoleAdmin(Role, db.session))
 
 
-import views
+from . import views
 
 # Executes before the first request is processed to init database.
 @app.before_first_request
@@ -50,6 +50,3 @@ def before_first_request():
 
     user_datastore.add_role_to_user('admin@localhost', 'admin')
     db.session.commit()
-
-if __name__=="__main__":
-    app.run(debug=True)
