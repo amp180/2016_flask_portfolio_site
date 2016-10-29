@@ -17,10 +17,11 @@ class ScriptNameStripper(object):
     def __call__(self, environ, start_response):
         path_info = environ.get('PATH_INFO', '')
 
-	if path_info.startswith(self.to_strip):
-        	environ['PATH_INFO'] = path_info[len(self.to_strip):]
-		environ['PATH_TRANSLATED'] = 'redirect:' + environ['PATH_INFO']
-	environ['SCRIPT_NAME'] = '/'
+        if path_info.startswith(self.to_strip):
+            environ['PATH_INFO'] = path_info[len(self.to_strip):]
+
+        environ['PATH_TRANSLATED'] = 'redirect:' + environ['PATH_INFO']
+        environ['SCRIPT_NAME'] = '/'
 
         return self.app(environ, start_response)
 
