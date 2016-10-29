@@ -2,6 +2,7 @@
 The flask application package.
 """
 
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import Security, utils
@@ -9,9 +10,9 @@ from flask_security import Security, utils
 app = Flask(__name__)
 #app.config['DEBUG'] = True
 app.config['PROPAGATE_EXCEPTIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./site.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = "WOWsEcReTkEY"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////' + os.path.join(os.getcwd(), 'site.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SECRET_KEY'] = "WOWsEcReTkEYsdfghjklkjhgfds"
 
 from .db_models import db, Project
 db.app = app
