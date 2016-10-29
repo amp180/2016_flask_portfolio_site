@@ -1,13 +1,8 @@
 #!/usr/bin/env python
 import os, sys
 
-# Change working directory so relative paths (and template lookup) are ensured
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-# Add local directory to python path, just in case
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
 #setup cgi/wsgi app
-from __init__ import app
+from flask_portfolio_site import app
 
 from wsgiref.handlers import CGIHandler
 from werkzeug.contrib.fixers import CGIRootFix 
