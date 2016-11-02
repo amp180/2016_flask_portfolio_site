@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='flask portfolio site',
-    version='1.0',
+    version='1.1',
     long_description=__doc__,
     packages=['flask_portfolio_site'],
     include_package_data=True,
@@ -20,7 +20,10 @@ setup(
         'requests-cache',
         'SQLAlchemy',
         'pytz',
-        'git+https://github.com/imiric/flask-sass.git#egg=flask-sass',
-        'flask-bower'
+        'flask-bower',
+        'flask-sass'
+    ],
+    dependency_links = [
+        'git+https://github.com/imiric/flask-sass/tarball/master',
     ]
 )
