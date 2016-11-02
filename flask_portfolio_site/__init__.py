@@ -6,6 +6,9 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import Security, utils
+from flaskext.sass import sass
+from flask.ext.bower import Bower
+
 
 app = Flask(__name__)
 #app.config['DEBUG'] = True
@@ -30,6 +33,8 @@ admin.add_view(RoleAdmin(Project, db.session))
 admin.add_view(UserAdmin(User, db.session))
 admin.add_view(RoleAdmin(Role, db.session))
 
+sass(app, input_dir='static/scss', output_dir='static/css')
+Bower(app)
 
 from . import views
 

@@ -19,6 +19,8 @@ setup(
         'requests',
         'requests-cache',
         'SQLAlchemy',
-        'pytz'
+        'pytz',
+        'git+https://github.com/imiric/flask-sass.git#egg=flask-sass',
+        'flask-bower'
     ]
 )
