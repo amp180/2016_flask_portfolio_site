@@ -1,0 +1,84 @@
+﻿body {
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.small_margin {
+    margin: 4px;
+    padding: 2px;
+}
+
+.redbg {
+    background: rgba(255, 16, 16, 0.3);
+}
+
+.greenbg {
+    background: rgba(16, 255, 16, 0.3);
+}
+
+.graybg {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.orangebg {
+    background: #fcf8e3;
+}
+
+.orangeheading {
+    color: #c09853;
+    background: #fcf8e3;
+}
+
+.greenheading{
+    color: #468847;
+    background:#dff0d8;
+}
+
+.nobackground {
+    background: none;
+}
+
+.five_pc_margin {
+    margin-left: 5%;
+    margin-top: 2%;
+}

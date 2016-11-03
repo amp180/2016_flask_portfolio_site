@@ -2,5 +2,5 @@
 *.pyc
 *.sqlite
 *.egg-info
-/flask_portfolio_site/static/css
-/flask_portfolio_port/bower_components/
+/flask_portfolio_site/static/css/*.scss.css
+/flask_portfolio_site/static/css/*.scss.css.map

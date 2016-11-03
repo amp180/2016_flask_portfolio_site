@@ -6,9 +6,7 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import Security, utils
-from flaskext.sass import sass
-from flask.ext.bower import Bower
-
+from sassutils.wsgi import SassMiddleware
 
 app = Flask(__name__)
 #app.config['DEBUG'] = True
@@ -33,8 +31,9 @@ admin.add_view(RoleAdmin(Project, db.session))
 admin.add_view(UserAdmin(User, db.session))
 admin.add_view(RoleAdmin(Role, db.session))
 
-sass(app, input_dir='static/scss', output_dir='static/css')
-Bower(app)
+app.wsgi_app = SassMiddleware(app.wsgi_app, {
+    'flask_portfolio_site': ('static/sass', 'static/css', '/static/css')
+})
 
 from . import views
 

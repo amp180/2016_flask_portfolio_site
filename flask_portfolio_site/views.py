@@ -76,7 +76,11 @@ def ip(*args, **kwargs):
 @app.route('/dcu_rooms')
 def dcu_rooms(*args, **kwargs):
     """Returns the status of labs in DCU."""
-    rooms = ['GLA.LG25', 'GLA.LG26', 'GLA.L114', 'GLA.L101', 'GLA.L128', 'GLA.L125', 'GLA.C204', 'GLA.C206', 'GLA.C214']
+    rooms = [
+        'GLA.LG25', 'GLA.LG26', 'GLA.L114',
+        'GLA.L101', 'GLA.L128', 'GLA.L125',
+        'GLA.C204'
+    ]
     #use thread pool to look up availability
     availability = Pool(9).map(dcu_lab_free_now, rooms)
 

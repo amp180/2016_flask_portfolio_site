@@ -21,9 +21,10 @@ setup(
         'SQLAlchemy',
         'pytz',
         'flask-bower',
-        'flask-sass'
+        'libsass>=0.6.0'
     ],
-    dependency_links = [
-        'git+https://github.com/imiric/flask-sass/tarball/master',
-    ]
+    setup_requires=['libsass>=0.6.0'],
+    sass_manifests={
+        'flask_portfolio_site': ('static/sass', 'static/css', '/static/css')
+    }
 )
