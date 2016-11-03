@@ -20,7 +20,6 @@ setup(
         'requests-cache',
         'SQLAlchemy',
         'pytz',
-        'flask-bower',
         'libsass>=0.6.0'
     ],
     setup_requires=['libsass>=0.6.0'],
