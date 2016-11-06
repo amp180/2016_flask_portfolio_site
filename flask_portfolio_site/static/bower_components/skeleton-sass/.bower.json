@@ -1,0 +1,45 @@
+{
+  "name": "skeleton-sass",
+  "version": "3.0.1",
+  "author": "Dennis Thompson",
+  "homepage": "http://atomicpages.github.io/skeleton-sass/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atomicpages/skeleton-sass.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "main": [
+    "README.md"
+  ],
+  "keywords": [
+    "sass",
+    "design",
+    "ui",
+    "responsive",
+    "skeleton",
+    "scss"
+  ],
+  "ignore": [
+    ".gitignore",
+    ".gitattributes",
+    "sache.json",
+    "dependencies/"
+  ],
+  "dependencies": {
+    "normalize-scss": "normalize.scss#latest"
+  },
+  "_release": "3.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.0.1",
+    "commit": "850e06b29029fefa4d7335de1f48e4be93c7b77d"
+  },
+  "_source": "https://github.com/atomicpages/skeleton-sass.git",
+  "_target": "^3.0.1",
+  "_originalSource": "skeleton-sass"
+}
