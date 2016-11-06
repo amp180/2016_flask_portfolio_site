@@ -1,20 +1,16 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-<figure class="row">
-    <div class="col-md-4 vcenter">
-        <img role="presentation" class="img-rounded img-responsive embed-responsive-16by9" src="/static/content/face.jpg">
-    </div>
-    <!--
-    -->
-    <figcaption id="introduction" class="col-md-6 vcenter">
-        <h2>Hi!</h2>
-        <p>
-            I'm Adam Pegman, a {{ age }} year old computing student from Co. Wicklow, Ireland. <br>
-            This is my portfolio site where I will hopefully be posting some projects.
-        </p>
-    </figcaption>
-</figure>
-
+<main role="main" class="homepage">
+  <header>
+    <h1>Hi!</h1>
+    <p id="introduction">
+        I'm Adam Pegman, a {{ age }} year old computing student from Co. Wicklow, Ireland.<br>
+        This is my portfolio site where I will hopefully be posting some projects.
+    </p>
+  </header>
+  <figure>
+    <img role="presentation" src="/static/content/face.jpg" width=480 height=480 \>
+  </figure>
+</main>
 {% endblock %}

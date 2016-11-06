@@ -1,34 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<center class="well orangeheading">
-    <h1>Fatty Memes</h1>
-</center>
-<div class="row">
-    <center class="col-md-6 row">
-        <img class="img-responsive panel panel-default" alt="Fatty is a hobbit from Lort of the rings." src="/static/content/fatty.jpg" />
-    </center>
-    <div class="col-md-6 well nobackground">
-        <center>
-            <br>
-            <p>
-                See this Awesome Face? <br> Wanna draw <strong>memetext</strong> all over it? <br> You know you want to, <strong>Gowan.</strong> <br> Do it.
-            </p>
-            <br>
-        </center>
-        <center>
-            <form action="/fatty/submit" method="GET" >
-                <div class="form-group">
-                    <label for="caption1">Top Text</label>
-                    <input type="text" class="form-control" id="caption1" name="caption1" maxlength="28">
-                </div>
-                <div class="form-group">
-                    <label for="caption2">Bottom Text</label>
-                    <input type="text" class="form-control" id="caption2" name="caption2" maxlength="28">
-                </div>
-                <input type="submit" formaction="submit" class="btn btn-default" />
-            </form>
-        </center>
-    </div>
+<main role="main" class="fatty">
+<h1>Fatty Memes</h1>
+<div>
+    <img alt="Fatty is a hobbit from Lort of the rings." src="/static/content/fatty.jpg" />
+    <p>
+        See this Awesome Face? <br> Wanna draw <strong>memetext</strong> all over it? <br> You know you want to, <strong>Gowan.</strong> <br> Do it.
+    </p>
+    <form action="/fatty/submit" method="GET" >
+        <div class="form-group">
+            <label for="caption1">Top Text</label>
+            <input type="text" class="form-control" id="caption1" name="caption1" maxlength="28">
+        </div>
+        <div class="form-group">
+            <label for="caption2">Bottom Text</label>
+            <input type="text" class="form-control" id="caption2" name="caption2" maxlength="28">
+        </div>
+        <input type="submit" formaction="submit" class="btn btn-default" />
+    </form>
 </div>
 {% endblock %}

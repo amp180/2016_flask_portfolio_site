@@ -1,9 +1,189 @@
-﻿body {
-    padding-top: 70px;
-    padding-bottom: 20px;
+//@import "../bower_components/skeleton/css/normalize";
+//@import "../bower_components/skeleton/css/skeleton";
+@import "../bower_components/susy/sass/susy";
+@import "https://fonts.googleapis.com/css?family=Droid+Sans";
+@import "https://fonts.googleapis.com/css?family=Alike+Angular";
+
+@mixin table-center(){
+  display: table;
+  margin: auto auto;
 }
 
+body, html {
+    min-height: 100%;
+    @include susy-media(0px, 899px){font-family: 'Droid Sans', sans-serif;}
+    @include susy-media(900px, 99999px){font-family: 'Alike Angular', serif, sans-serif;}
+}
 
+body {
+    padding: 0 0;
+}
+
+li[role=alert] {
+  background-color: rgba(16, 255, 16, 0.3);
+  list-style:none;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.10);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: auto 5%;
+  a{
+    display: inline-block;
+  }
+}
+
+.homepage {
+  //css for homepage
+  //full width+height
+  @include container();
+  @include table-center();
+  min-height: 80%;
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    max-width: 480px;
+    border-radius: 3px;
+  }
+  //50% Grid layout for desktop
+  @include susy-media(900px 9999px){
+    figure{
+      @include span(isolate 32 of 64 at 0 last no-gutters);
+    }
+    header {
+      @include span(isolate 32 of 64 at 33 no-gutters);
+      transform: translateY(100%);
+    }
+  }
+  //mobile layout
+  //everything full width, reverse order by rotation.
+  @include susy-media(0px 899px) {
+    transform: rotate(180deg);
+    &>* {
+      transform: rotate(180deg);
+      transition: none !important;
+    }
+  }
+}
+
+.flexbox-homepage {
+  //css for homepage using display: flex
+  display: flex;
+  flex-basis: 100%;
+  flex-flow: row-reverse;
+  justify-content: center;
+  @include susy-media(0em 40em) {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    flex-basis: 50%;
+  }
+  figure>img {
+    width: 100%;
+    height: auto;
+    max-height: 80vw;
+    border-radius: 10px;
+  }
+  header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.cv {
+  @include container();
+  header{
+    width: 100%;
+    text-align: center;
+    size: 2.5em;
+  }
+  li{
+    margin-left: none;
+    list-style: none;
+    &+* {
+      margin-top: 1em;
+    }
+  }
+  table{
+    border-collapse: collapse;
+    text-align: justify;
+    minwidth: 250px;
+  }
+  thead{
+    border-bottom: 1px solid grey;
+  }
+  @include susy-media(900px){
+    section{
+      margin-top: 10%;
+    }
+    &>figure{
+      @include span( 1 of 2 at 1 no-gutters first);
+    }
+    &>div:nth-of-type(1){
+      @include span( 1 of 2 at 2 no-gutters last);
+      &>section{
+        width:100%;
+        margin-top: 10%;
+      }
+    }
+    &>div:nth-of-type(2){
+      @include container();
+      &>*{
+        @include gallery(2, of-type);
+      }
+    }
+    &>*:last-child{
+      clear: both;
+      margin-top: 5%;
+      transform: translateY(-50%);
+      table{
+        width: 100%;
+        @include table-center;
+        min-width: 200px;
+      }
+    }
+  }
+}
+
+.project_list{
+  @include container();
+  @include table-center();
+  width: 80%;
+  header{
+    width: 100%;
+    text-align: center;
+  }
+  &>* {
+    @include gallery(1 of 2, of-type);
+  }
+}
+
+#Labs{
+  @include container();
+  &>*{
+    @include gallery(1 of 3 no-gutters, child);
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    &[data-status="Closed"]{
+      background-color: gray;
+    }
+    &[data-status="Free"]{
+      background-color: green;
+    }
+    &[data-status="Booked"]{
+      background-color: red;
+    }
+  }
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,

@@ -1,19 +1,13 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<center class="well greenheading">
-    <h1>Projects</h1>
-</center>
-<div class="row">
-        {% for i, proj in enumerate(projects): %}
-            <figure class="col-md-6">
-                <figcaption class="well">
-                    <center><h2><a id="project-{{proj.id}}" href="/Projects/{{proj.id}}"> {{proj.name}}</a></h2></center>
-                </figcaption>
-                <center>
-                    <img class="img-responsive" aria-labelledby="project-{{proj.id}}" src="{{proj.img_url}}" \>
-                </center>
-            </figure>
-        {% endfor %}
-</div>
+<main role="main" class="project_list">
+  <header><h1>Projects</h1></header>
+  {% for i, proj in enumerate(projects): %}
+      <figure>
+        <header><h2><a id="project-{{proj.id}}" href="/Projects/{{proj.id}}"> {{proj.name}}</a></h2></header>
+        <img class="img-responsive" aria-labelledby="project-{{proj.id}}" src="{{proj.img_url}}" \>
+      </figure>
+    {% endfor %}
+</main>
 {% endblock %}
