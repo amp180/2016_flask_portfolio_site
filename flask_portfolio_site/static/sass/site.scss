@@ -4,14 +4,42 @@
 @import "https://fonts.googleapis.com/css?family=Droid+Sans";
 @import "https://fonts.googleapis.com/css?family=Alike+Angular";
 
+$color-success: rgba(16, 255, 16, 0.3); /* transparent green */
+$color-warn:  rgba(252, 248, 227, 0.3); /*transparent orange */
+$color-fail: rgba(255, 16, 16, 0.3); /* transparent red */
+$color-null: rgba(0, 0, 0, 0.3); /* transparent grey */
+
 @mixin table-center(){
   display: table;
   margin: auto auto;
 }
 
+@mixin responsive-img(){
+  width: 100%;
+  height: auto;
+  margin: auto auto;
+  border-radius: 3px;
+}
+
+@mixin reverse-layout(){
+  transform: rotate(180deg);
+  &>* {
+    transform: rotate(180deg);
+  }
+}
+
+@mixin vcenter(){
+      display: inline-block;
+      vertical-align: middle;
+      float: none;
+}
+
 body, html {
     min-height: 100%;
-    @include susy-media(0px, 899px){font-family: 'Droid Sans', sans-serif;}
+    margin: 0 0;
+    padding: 0 0;
+    font-variant-ligatures: common-ligatures contextual;
+    font-family: 'Droid Sans', sans-serif;
     @include susy-media(900px, 99999px){font-family: 'Alike Angular', serif, sans-serif;}
 }
 
@@ -20,7 +48,7 @@ body {
 }
 
 li[role=alert] {
-  background-color: rgba(16, 255, 16, 0.3);
+  background: $color-warn;
   list-style:none;
 }
 
@@ -40,6 +68,7 @@ nav {
   }
 }
 
+
 .homepage {
   //css for homepage
   //full width+height
@@ -47,11 +76,9 @@ nav {
   @include table-center();
   min-height: 80%;
   img {
-    width: 100%;
-    height: auto;
+    @include responsive-img();
     max-height: 480px;
     max-width: 480px;
-    border-radius: 3px;
   }
   //50% Grid layout for desktop
   @include susy-media(900px 9999px){
@@ -64,13 +91,9 @@ nav {
     }
   }
   //mobile layout
-  //everything full width, reverse order by rotation.
+  //everything full width, reverse order.
   @include susy-media(0px 899px) {
-    transform: rotate(180deg);
-    &>* {
-      transform: rotate(180deg);
-      transition: none !important;
-    }
+    @include reverse_layout();
   }
 }
 
@@ -86,10 +109,8 @@ nav {
     flex-basis: 50%;
   }
   figure>img {
-    width: 100%;
-    height: auto;
+    @include responsive-img();
     max-height: 80vw;
-    border-radius: 10px;
   }
   header{
     display: flex;
@@ -115,7 +136,7 @@ nav {
   table{
     border-collapse: collapse;
     text-align: justify;
-    minwidth: 250px;
+    min-width: 250px;
   }
   thead{
     border-bottom: 1px solid grey;
@@ -131,7 +152,6 @@ nav {
       @include span( 1 of 2 at 2 no-gutters last);
       &>section{
         width:100%;
-        margin-top: 10%;
       }
     }
     &>div:nth-of-type(2){
@@ -166,99 +186,35 @@ nav {
   }
 }
 
-#Labs{
-  @include container();
-  &>*{
-    @include gallery(1 of 3 no-gutters, child);
-    padding: 5px;
-    margin: 5px;
-    border-radius: 5px;
-    &[data-status="Closed"]{
-      background-color: gray;
-    }
-    &[data-status="Free"]{
-      background-color: green;
-    }
-    &[data-status="Booked"]{
-      background-color: red;
+.dcu_rooms {
+  text-align: center;
+  #Labs{
+    @include container();
+    &>*{
+      @include susy-media(1248px){
+        @include gallery(1 of 4 no-gutters, child);
+      }
+      @include susy-media(800px 1248px){
+        @include gallery(1 of 3 no-gutters, child);
+      }
+      @include susy-media(600px 800px){
+        @include gallery(1 of 2 no-gutters, child);
+      }
+      @include susy-media(0px 600px){
+        &>*{width: 100%;};
+      }
+      padding: 5px;
+      margin: 5px;
+      border-radius: 5px;
+      &[data-status="Closed"]{
+        background: $color-null;
+      }
+      &[data-status="Free"]{
+        background: $color-success;
+      }
+      &[data-status="Booked"]{
+        background: $color-warn;
+      }
     }
   }
-}
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
-}
-
-.field-validation-valid {
-    display: none;
-}
-
-input.input-validation-error {
-    border: 1px solid #b94a48;
-}
-
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
-}
-
-.validation-summary-errors {
-    color: #b94a48;
-}
-
-.validation-summary-valid {
-    display: none;
-}
-
-
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-}
-
-.small_margin {
-    margin: 4px;
-    padding: 2px;
-}
-
-.redbg {
-    background: rgba(255, 16, 16, 0.3);
-}
-
-.greenbg {
-    background: rgba(16, 255, 16, 0.3);
-}
-
-.graybg {
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.orangebg {
-    background: #fcf8e3;
-}
-
-.orangeheading {
-    color: #c09853;
-    background: #fcf8e3;
-}
-
-.greenheading{
-    color: #468847;
-    background:#dff0d8;
-}
-
-.nobackground {
-    background: none;
-}
-
-.five_pc_margin {
-    margin-left: 5%;
-    margin-top: 2%;
 }

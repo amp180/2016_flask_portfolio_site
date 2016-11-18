@@ -5,8 +5,8 @@
   <header><h1>Projects</h1></header>
   {% for i, proj in enumerate(projects): %}
       <figure>
-        <header><h2><a id="project-{{proj.id}}" href="/Projects/{{proj.id}}"> {{proj.name}}</a></h2></header>
-        <img class="img-responsive" aria-labelledby="project-{{proj.id}}" src="{{proj.img_url}}" \>
+        <header><h2><a id="project-{{proj.id}}" href="/Projects/{{proj.id}}">{{proj.name}}</a></h2></header>
+        <img alt="" aria-labelledby="project-{{proj.id}}" src="{{proj.img_url}}">
       </figure>
     {% endfor %}
 </main>

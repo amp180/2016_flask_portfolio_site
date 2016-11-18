@@ -1,18 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-<center class="well greenheading">
-    <h1>{{proj.name}}</h1>
-</center>
-
-{{proj.html|safe}}
-
-<div class="alert alert-info">
-    <span class="glyphicon glyphicon-time"></span>
-    Published: {{proj.publish_date}}
-    |
-    <span class="glyphicon glyphicon-link"></span>
-    <a href="{{url_for('project', slug=proj.id)}}">http://Pegman.Space{{url_for('project', slug=proj.id)}}</a>
-</div>
+<main class="article_page">
+  <article>
+    <header>
+        <h1>{{proj.name}}</h1>
+    </header>
+    {{proj.html|safe}}
+    <footer>
+        <span>
+          <abbr title="Post Time: ">&#x23F2;</abbr>
+          <time>{{proj.publish_date}}</time>
+        </span>
+        |
+        <a href="{{url_for('project', slug=proj.id)}}">
+            <abbr title="Link: ">&#x1f517; </abbr>
+            http://Pegman.Space{{url_for('project', slug=proj.id)}}
+        </a>
+    </footer>
+  </article>
+</main>
 {% endblock %}
