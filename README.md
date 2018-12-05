@@ -10,8 +10,7 @@ It also had a small blog, a javascript/svg clock, an ip checker and a tool to ch
 
 It also had a meme generator as an easter egg, credit to @ConorDavenport for the template.
 
-![Screenshot](/../master/2016_flask_portfolio_site/flask_portfolio_site/static/content/Homepage.png "The Homepage")
+![Screenshot](/../master/flask_portfolio_site/static/content/Homepage.png "The Homepage")
 
 ![Screenshot of the clock](/../master/flask_portfolio_site/static/content/clock.png "The Clock")
 
-![The meme template](/../master/flask_portfolio_site/static/content/fatty.jpg "The Meme Template")
